@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Autobraking System</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-image: url("bgImg.jpg");
+        background-size: cover;
+        background-position: center;
+        font-family: Arial, sans-serif;
+      }
+
+      .content {
+        text-align: center;
+        padding-top: 250px;
+        color: white;
+      }
+
+      .input-box {
+        margin-bottom: 20px;
+        width: 220px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .input-box label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .input-box input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      .button {
+        margin-top: 20px;
+      }
+
+      .button button {
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .custom-alert {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: yellow;
+        border: 2px solid black;
+        border-radius: 5px;
+        padding: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        width: 300px;
+        text-align: center;
+      }
+
+      .custom-alert img {
+        width: 50px;
+        height: 50px;
+      }
+
+      .custom-alert p {
+        margin-top: 10px;
+        font-size: 16px;
+        color: black;
+      }
+
+      .custom-alert button {
+        margin-top: 10px;
+        padding: 5px 10px;
+        font-size: 14px;
+        cursor: pointer;
+        border: none;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <div class="input-box">
+        <label for="distance">Distance (m):</label>
+        <input type="text" id="distance" name="distance" />
+      </div>
+
+      <div class="input-box">
+        <label for="speed">Speed (m/s):</label>
+        <input type="text" id="speed" name="speed" />
+      </div>
+
+      <div class="button">
+        <button onclick="autobrakingSystem()">Calculate</button>
+      </div>
+    </div>
+
+    <div id="customAlert" class="custom-alert">
+      <img
+        src="https://img.icons8.com/ios-filled/50/000000/error.png"
+        alt="Alert Icon"
+      />
+      <p id="alertMessage"></p>
+      <button onclick="closeAlert()">OK</button>
+    </div>
+
+    <script>
+      function autobrakingSystem() {
+        const speed = parseFloat(document.getElementById("speed").value);
+        const distance = parseFloat(document.getElementById("distance").value);
+
+        const maxDeceleration = 5;
+        const minSafeDistance = 10;
+
+        const stoppingDistance = speed ** 2 / (2 * maxDeceleration);
+        let result = "";
+
+        if (distance <= minSafeDistance) {
+          result = "Apply brakes! The obstacle is very close.";
+        } else if (stoppingDistance >= distance) {
+          result =
+            "Apply brakes! The vehicle cannot stop in time to avoid the obstacle.";
+        } else {
+          result = "No need to apply brakes. The vehicle can stop in time.";
+        }
+
+        showAlert(result);
+      }
+
+      function showAlert(message) {
+        document.getElementById("alertMessage").textContent = message;
+        document.getElementById("customAlert").style.display = "block";
+      }
+
+      function closeAlert() {
+        document.getElementById("customAlert").style.display = "none";
+      }
+    </script>
+  </body>
+</html>
