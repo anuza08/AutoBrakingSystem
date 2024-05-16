@@ -1,4 +1,4 @@
-Automatic Emergency Braking System
+<h1>Automatic Emergency Braking System</h1>
 Description:
 This project implements an Automatic Emergency Braking (AEB) System, a safety feature designed to prevent or mitigate collisions in vehicles. The system utilizes sensor data and advanced algorithms to detect potential collisions and automatically apply the brakes if necessary. It aims to enhance vehicle safety by providing an additional layer of protection for drivers and passengers.
 
