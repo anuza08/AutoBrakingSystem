@@ -20,4 +20,5 @@ Contributions to this project are welcome! Whether you're interested in improvin
 
 
 <h3> Note </h3>
-<h4> To improves performance we have to use 9 epoch and 500 step_epoch it will approximatly give less than 100 loss and moe=re than 97% accuracy </h4>
+<h4> To improves performance we have to use 9 epoch and 500 step_epoch it will approximatly give less than 100 loss and more than 97% accuracy </h4>
+<h4> By using this firstly the model have 79000 loss and we reduces it to the 2700 </h4>
