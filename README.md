@@ -19,3 +19,5 @@ This project implements an Automatic Emergency Braking (AEB) System, a safety fe
 Contributions to this project are welcome! Whether you're interested in improving algorithm efficiency, adding support for additional sensors, or enhancing system reliability, your contributions can help advance vehicle safety technology.
 
 
+<h3> Note </h3>
+<h4> To improves performance we have to use 9 epoch and 500 step_epoch it will approximatly give less than 100 loss and moe=re than 97% accuracy </h4>
