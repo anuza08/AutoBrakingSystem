@@ -87,6 +87,26 @@
         border: none;
         border-radius: 4px;
       }
+
+      .circle-outline {
+        display: none;
+        position: fixed;
+        top: 80%;
+        left: 18%;
+        transform: translate(-50%, -50%);
+        width: 150px;
+        height: 300px;
+        border: 5px solid yellow;
+        box-sizing: border-box;
+        z-index: 999;
+      }
+
+      .message {
+        display: none;
+        color: green;
+        font-size: 24px;
+        margin-top: 20px;
+      }
     </style>
   </head>
   <body>
@@ -104,6 +124,8 @@
       <div class="button">
         <button onclick="autobrakingSystem()">Calculate</button>
       </div>
+
+      <h3 id="keepMovingMessage" class="message">Keep moving</h3>
     </div>
 
     <div id="customAlert" class="custom-alert">
@@ -114,6 +136,8 @@
       <p id="alertMessage"></p>
       <button onclick="closeAlert()">OK</button>
     </div>
+
+    <div id="circleOutline" class="circle-outline"></div>
 
     <script>
       function autobrakingSystem() {
@@ -139,12 +163,31 @@
       }
 
       function showAlert(message) {
-        document.getElementById("alertMessage").textContent = message;
-        document.getElementById("customAlert").style.display = "block";
+        if (
+          message === "No need to apply brakes. The vehicle can stop in time."
+        ) {
+          document.getElementById("keepMovingMessage").style.display = "block";
+        } else {
+          document.getElementById("keepMovingMessage").style.display = "none";
+          document.getElementById("alertMessage").textContent = message;
+          document.getElementById("customAlert").style.display = "block";
+
+          if (message.includes("Apply brakes!")) {
+            showCircleOutline();
+          }
+        }
       }
 
       function closeAlert() {
         document.getElementById("customAlert").style.display = "none";
+      }
+
+      function showCircleOutline() {
+        const circle = document.getElementById("circleOutline");
+        circle.style.display = "block";
+        setTimeout(() => {
+          circle.style.display = "none";
+        }, 3000);
       }
     </script>
   </body>
